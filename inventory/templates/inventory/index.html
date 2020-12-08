@@ -1,0 +1,42 @@
+{% extends "inventory/layout.html" %}
+
+{% block titlepage %}
+Inventario
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container">
+    <div class="head-cont">
+        <strong>Productos </strong>
+        <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
+    </div>
+    <table id="date-table">
+        <thead>
+            <th>Nombre del producto</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Actions</th>
+
+        </thead>
+        <tbody>
+            {% for product in products %}
+
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.model}}</td>
+                <td>${{product.price}}</td>
+                <td>{{product.stock}} </td>
+                <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

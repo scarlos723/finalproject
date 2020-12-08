@@ -1,0 +1,44 @@
+{% extends "inventory/layout.html" %}
+
+{% block titlepage %}
+Orders
+{% endblock %}
+
+
+{% block body %}
+    <div class="page">
+
+        <div class="container ft-center">
+            <div class="head-cont">
+                <strong>Cotizaciones </strong>
+                <input class="head-cont" type="text" value="buscar">
+            </div>
+            <table id="date-table">
+                <thead>
+                    <th>Nombre del producto</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Actions</th>
+        
+                </thead>
+                <tbody>
+                    {% for product in products %}
+        
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.model}}</td>
+                        <td>${{product.price}}</td>
+                        <td>{{product.stock}} </td>
+                        <td><button class="button_blue"> Agregar</button> </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+    
+        </div>
+
+
+    </div>
+
+{% endblock %}

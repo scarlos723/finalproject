@@ -1,0 +1,50 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}">
+
+        
+    <script src="{% static 'inventory/function.js' %}"> </script>
+
+   
+
+    <title>
+        {% block titlepage %}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+   {% if user.is_authenticated %} 
+    <nav>
+        <ul class="menu">
+            <li class="logo "><a href="{% url 'index'%}">LOGO</a></li>
+            <li class="item "><a href="{% url 'index'%} ">Inventario</a></li>
+            <li class="item "><a href="{% url 'orders' %}">Ordenes y Cotizaciones</a></li>
+            
+            <li class="item "><a href="reportes.html">Reportes</a></li>
+
+            <li class="log_option "><a href="{% url 'logout' %}">Log Out</a><a href="#">{{user.username}}</a></li>
+        </ul>
+    </nav>
+    {% else %}
+
+    <nav>
+        <ul class="menu">
+            <li class="logo "><a href="#">LOGO</a></li>
+        </ul>
+    </nav>
+
+    {% endif %}
+
+    {% block body %}
+    
+    {% endblock %}
+
+
+</body>
+</html>

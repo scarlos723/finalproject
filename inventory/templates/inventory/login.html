@@ -1,0 +1,46 @@
+{% extends "inventory/layout.html" %}
+
+
+{% block titlepage %}
+Login
+{% endblock %}
+
+{% block body %}
+
+{% if message %}
+<div>{{ message }}</div>
+{% endif %}
+<div class="page">
+
+
+    <div class="section login_ft">
+        <div class="login_box">
+            <div id="text_login">
+                Login
+            </div>
+            <form class="item_login" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                
+                <button class="button_blue" type="submit">Login</button>
+                
+                <div>
+                    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+                </div>
+            </form>
+
+            
+                
+            
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

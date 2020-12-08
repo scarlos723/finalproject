@@ -1,0 +1,100 @@
+{% extends "inventory/layout.html" %}
+
+
+{% block titlepage %}
+Login
+{% endblock %}
+
+{% block body %}
+
+    <div class="container ft-cont">
+        <div class="head-cont">
+            <strong>Productos en stock </strong>
+            <input class="head-cont" type="text" value="buscar">
+        </div>
+        <table id="date-table">
+            <thead>
+                <th>Nombre del producto</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Actions</th>
+    
+            </thead>
+            <tbody>
+                {% for product in products %}
+    
+                <tr>
+                    <td id="item-name-{{product.id}}">{{product.name}}</td>
+                    <td id="item-model-{{product.id}}">{{product.model}}</td>
+                    <td id="item-price-{{product.id}}">${{product.price}}</td>
+                    <td id="item-stock-{{product.id}}">{{product.stock}} </td>
+                    <td><button data-page="{{product.id}}" class="button_blue" id="btn-add"> Add </button> </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+
+    </div>
+    
+        <div class="ft-button">
+        <button onclick="location.href='lista_ordenes.html'">Ver listado Ordenes</button>
+        <button onclick="location.href='lista_cotizaciones.html'">Ver listado Contizaciones</button>
+        <button onclick="location.href='lista_clientes.html'">Ver listado Clientes</button>
+    </div>
+    
+
+    <div class="container ft-cont">
+
+        <div class="head-cont">
+            <strong> Productos en stock </strong>
+
+        </div>
+        <div class="cotiza_container">
+            <table id="cart-table">
+                <thead>
+                    <th>Nombre del producto</th>
+                    <th>modelo</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+
+                </thead>
+
+                <tbody id="tbody_cart">
+                    
+                </tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    TOTAL: $
+                    </td>
+                    <td id="total-cart">
+                       
+                    </td>
+                </tr>
+            </table>
+
+            <div class="date_box">
+                <div id="text_date">
+                    Datos del cliente:
+                </div>
+                <form action="" class="item_date">
+                    <input type="text" value="Nombre">
+                    <input type="text" value="Apellido">
+                    <input type="text" value="Identificacion">
+                    <input type="text" value="Telefono">
+                    <div class="button_container">
+                        <button class="button_yellow"> Generar Cotización</button>
+                        <button class="button_green"> Generar Orden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock%}
