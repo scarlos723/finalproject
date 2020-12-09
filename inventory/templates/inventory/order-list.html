@@ -1,0 +1,36 @@
+{% extends "inventory/layout.html" %}
+
+
+{% block titlepage %}
+Login
+{% endblock %}
+
+{% block body %}
+
+{% if message %}
+{{message}}
+{% endif %}
+
+<table>
+    <thead>
+        <th>No. Orden</th>
+        <th>Client</th>
+        <th>User</th>
+        <th>Value</th>
+        
+        <th>Actions</th>
+
+    </thead>
+    {% for order in orders %}
+    <tr>
+        <td>{{order.id}} </td>
+        <td>{{order.client.name}} {{order.client.lastname}}  </td>
+        <td>{{order.user.username}} </td>
+        <td>${{order.value}} </td>
+       
+        <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

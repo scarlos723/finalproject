@@ -73,4 +73,47 @@ def register(request):
 def orders_view(request):
     products =  Product.objects.all()
     return render(request,"inventory/orders_view.html",{"products":products})
+
+
+def create_order(request):
+
+    products =  Product.objects.all()
+
+    if request.method == "POST":
+        
+        clientName = request.POST["name"]
+        clientLastname = request.POST["lastname"]
+        clientIdentification = int(request.POST["identification"])
+        clientTelephone = int (request.POST["telephone"])
+        orderTotal = int(request.POST["total"])
+        typeOrder = request.POST["type_order"]
+        user_id = request.POST["user_id"]
+        descript = request.POST["description"]
+        try:
+            clientAux=Client.objects.get(id_number=clientIdentification)
+        except:
+            print("No se encontro el cliente")
+            clientAux = Client.objects.create(name=clientName, lastname=clientLastname, id_number=clientIdentification, tel=clientTelephone)
+            clientAux.save()
+          
+
+        userAux = User.objects.get(pk=user_id);
+
+        order = Order.objects.create(kind=typeOrder, value=orderTotal, client=clientAux, user=userAux, description=descript)
+        order.save()
+
+
+
+    return render(request, "inventory/orders_view.html",{"products":products , "message":"Orden Creada"})
+
+
+def show_orders(request, kind):
     
+    orders = Order.objects.filter(kind = kind)
+    return render(request, "inventory/order-list.html",{"orders":orders , "message":"Cargando ordenes..."})
+
+
+def show_clients(request):
+
+    clients = Client.objects.all()
+    return render(request, "inventory/client-list.html",{"clients":clients })

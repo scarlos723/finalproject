@@ -1,0 +1,64 @@
+{% extends "inventory/layout.html" %}
+
+
+{% block titlepage %}
+Login
+{% endblock %}
+
+{% block body %}
+
+
+<div class="page">
+
+    <div class="container ft-center">
+        <div class="head-cont">
+            <strong>Clients </strong>
+            <input class="head-cont" type="text" placeholder="search">
+        </div>
+        <table >
+            <thead>
+                <th>Identification</th>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Telephone Number</th>
+                <th>Actions</th>
+
+            </thead>
+            {% for client in clients %}
+            <tr>
+                
+                <td> 
+                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.id_number}}" style="display: none;" > </p>  
+                    <p id="item-client-{{client.id}}">{{client.id_number}} </p> 
+                </td>
+                <td>
+                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.name}}" style="display: none;"> </p> 
+                     <p id="item-client-{{client.id}}">{{client.name}}</p>
+                </td>
+                <td>
+                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.lastname}}" style="display: none;"> </p> 
+                    <p id="item-client-{{client.id}}">{{client.lastname}} </p>
+                </td>
+                <td>
+                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.tel}}" style="display: none;"> </p> 
+                    <p id="item-client-{{client.id}}">{{client.tel}}</p>
+                </td>
+
+                <td> 
+                    <button class="button_blue" onclick="modify_view({{client.id}})"> Modify </button> 
+                    <button class="button_red" onclick="delete_client({{client.id}})" > Delete </button>
+                    <button class="button_green" onclick="modify_client({{client.id}})" style="display: none;" > Apply </button>
+                </td>
+            </tr>
+
+            {% endfor %}
+            
+        </table>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

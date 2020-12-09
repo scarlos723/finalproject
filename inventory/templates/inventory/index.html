@@ -10,15 +10,15 @@ Inventario
 
 <div class="container">
     <div class="head-cont">
-        <strong>Productos </strong>
+        <strong>Inventory </strong>
         <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
     </div>
     <table id="date-table">
         <thead>
-            <th>Nombre del producto</th>
-            <th>Modelo</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Product Name</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Amount</th>
             <th>Actions</th>
 
         </thead>
@@ -30,7 +30,7 @@ Inventario
                 <td>{{product.model}}</td>
                 <td>${{product.price}}</td>
                 <td>{{product.stock}} </td>
-                <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
+                <td><button class="button_blue"> Modify</button> <button class="button_red">Delete</button></td>
             </tr>
             {%endfor%}
         </tbody>

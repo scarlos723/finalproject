@@ -7,17 +7,21 @@ Login
 
 {% block body %}
 
+{% if message %}
+    {{message}}
+{% endif %}
+
     <div class="container ft-cont">
         <div class="head-cont">
-            <strong>Productos en stock </strong>
+            <strong>Products In stock</strong>
             <input class="head-cont" type="text" value="buscar">
         </div>
         <table id="date-table">
             <thead>
-                <th>Nombre del producto</th>
-                <th>Modelo</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+                <th>Product Name</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Stock</th>
                 <th>Actions</th>
     
             </thead>
@@ -29,7 +33,7 @@ Login
                     <td id="item-model-{{product.id}}">{{product.model}}</td>
                     <td id="item-price-{{product.id}}">${{product.price}}</td>
                     <td id="item-stock-{{product.id}}">{{product.stock}} </td>
-                    <td><button data-page="{{product.id}}" class="button_blue" id="btn-add"> Add </button> </td>
+                    <td><button data-page="{{product.id}}" class="button_blue" id="btn-add"> Add to Order </button> </td>
                 </tr>
                 {%endfor%}
             </tbody>
@@ -38,25 +42,25 @@ Login
     </div>
     
         <div class="ft-button">
-        <button onclick="location.href='lista_ordenes.html'">Ver listado Ordenes</button>
-        <button onclick="location.href='lista_cotizaciones.html'">Ver listado Contizaciones</button>
-        <button onclick="location.href='lista_clientes.html'">Ver listado Clientes</button>
+        <button onclick="location.href='order-list/Sale'">Show Sales</button>
+        <button onclick="location.href='order-list/Quote'">Show Quotes</button>
+        <button onclick="location.href='client-list'">Show Clients</button>
     </div>
     
 
     <div class="container ft-cont">
 
         <div class="head-cont">
-            <strong> Productos en stock </strong>
+            <strong> Make Order </strong>
 
         </div>
         <div class="cotiza_container">
             <table id="cart-table">
                 <thead>
-                    <th>Nombre del producto</th>
-                    <th>modelo</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
+                    <th>Product Name</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Amount</th>
 
                 </thead>
 
@@ -67,7 +71,7 @@ Login
                     <td></td>
                     <td></td>
                     <td>
-                    TOTAL: $
+                    <strong> TOTAL: $ </strong> 
                     </td>
                     <td id="total-cart">
                        
@@ -77,18 +81,23 @@ Login
 
             <div class="date_box">
                 <div id="text_date">
-                    Datos del cliente:
+                    Client Data:
                 </div>
-                <form action="" class="item_date">
-                    <input type="text" value="Nombre">
-                    <input type="text" value="Apellido">
-                    <input type="text" value="Identificacion">
-                    <input type="text" value="Telefono">
+                <form id="order-form" class="item_date" method="POST">
+                    {% csrf_token %}
+                    <input name="name" type="text" placeholder="Name" >
+                    <input name="lastname" type="text" placeholder="Lastname" >
+                    <input name="identification" type="text" placeholder="Identification" >
+                    <input name="telephone" type="text" placeholder="Telephone number" >
+                    <input name="user_id" type="text" hidden value="{{user.id}}" >
+
                     <div class="button_container">
-                        <button class="button_yellow"> Generar Cotización</button>
-                        <button class="button_green"> Generar Orden</button>
+                        <button class="button_green" onclick="create_order('sale')"> Check In</button>
+                        <button class="button_yellow" onclick="create_order('quote')"> Generate Quote </button>
                     </div>
+                    
                 </form>
+               
             </div>
         </div>
 

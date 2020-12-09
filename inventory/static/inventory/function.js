@@ -11,6 +11,112 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function modify_view(id){
+    document.querySelectorAll('#inp-client-'+id).forEach(item=>{
+        item.style.display ="block";
+    });
+    
+    document.querySelectorAll('#item-client-'+id).forEach(item=>{
+        item.style.display ="none";
+    });
+
+    document.querySelector('.button_red').style.display ="none";
+    document.querySelector('.button_blue').style.display ="none";
+    document.querySelector('.button_green').style.display ="block";
+    
+    
+}
+
+function modify_client(id){
+    document.querySelectorAll('#inp-client-'+id).forEach(item=>{
+        item.style.display ="none";
+    });
+    
+    document.querySelectorAll('#item-client-'+id).forEach(item=>{
+        item.style.display ="block";
+    });
+
+    document.querySelector('.button_red').style.display ="inline";
+    document.querySelector('.button_blue').style.display ="inline";
+    document.querySelector('.button_green').style.display ="none";
+    
+
+}
+
+function create_order(order){
+
+    let order_form = document.getElementById('order-form').elements; //retorna una lista de los nputs
+
+    
+    let description="";
+    let items = document.getElementById('tbody_cart').rows;
+    
+    for (var i=0; i< items.length; i++ ){
+        description = description + items[i].innerText + "Amount: " + items[i].lastElementChild.value + " \n"   ;
+    }
+        
+    
+    console.log(description);
+
+
+    let data = new FormData();
+
+    data.append('csrfmiddlewaretoken',order_form.csrfmiddlewaretoken.value);
+    data.append('name',order_form.name.value);
+    data.append('lastname',order_form.lastname.value);
+    data.append('identification', order_form.identification.value);
+    data.append('telephone', order_form.telephone.value);
+    data.append('user_id', order_form.user_id.value);
+    data.append('total', document.getElementById("total-cart").innerText);
+    data.append('description', description);
+
+    console.log("Creando orden...");
+    //console.log(order_form);
+    //console.log(data);
+    console.log(order)
+  
+   
+    
+    if(order =="quote"){
+        
+        data.append('type_order', "Quote");
+
+        fetch('create-order',{
+            method:'POST',
+            body:data,
+            
+            
+        })
+        .then(response => response.json())
+        .then(result => {
+             // Print result
+             console.log(result);
+             //load_mailbox('inbox');
+           });
+        window.alert("The quote order has been created");
+    }
+
+    if (order=="sale"){
+        data.append('type_order', "Sale");
+        
+        fetch('create-order',{
+            method:'POST',
+            body:data,
+            
+            
+        })
+        .then(response => response.json())
+        .then(result => {
+             // Print result
+             console.log(result);
+             //load_mailbox('inbox');
+           });
+        window.alert("The purchase order has been created");
+    }
+    
+}
+
+
 function add_to_cart(id){
     var name = document.getElementById('item-name-' + id).innerHTML;
     var model = document.getElementById('item-model-' + id).innerHTML;
@@ -22,7 +128,10 @@ function add_to_cart(id){
     var tbl1 = document.createElement('td');
     var tbl2 = document.createElement('td');
     var tbl3 = document.createElement('td');
-
+    
+    trow.setAttribute('id','item-row'+id);
+    tbl1.setAttribute('id','name-product'+id);
+    tbl2.setAttribute('id','model-product'+id);
     tbl3.setAttribute('id','value'+id);
 
 
@@ -153,3 +262,14 @@ function search_item(){
     }
 
 }
+
+// function change_mode(){
+//     let state = document.getElementById("change-mode").innerText;
+
+//     if(state == "Night Mode"){
+//         document.body.style.backgroundColor = '#474c59';
+        
+//         console.log('color cambviado a modo oscuro');
+        
+//     }
+// }
