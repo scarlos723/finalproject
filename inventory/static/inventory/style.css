@@ -3,6 +3,7 @@
     padding: 0px;
     box-sizing: border-box;
 }
+
 .page{
     display: flex;
     flex-wrap: wrap;
@@ -190,6 +191,7 @@ td>input{
     width:40px ;
     text-align: center;
 }
+
 
   
 

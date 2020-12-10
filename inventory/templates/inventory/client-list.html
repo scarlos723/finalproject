@@ -15,7 +15,7 @@ Login
             <strong>Clients </strong>
             <input class="head-cont" type="text" placeholder="search">
         </div>
-        <table >
+        <table>
             <thead>
                 <th>Identification</th>
                 <th>Name</th>
@@ -24,35 +24,44 @@ Login
                 <th>Actions</th>
 
             </thead>
-            {% for client in clients %}
-            <tr>
-                
-                <td> 
-                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.id_number}}" style="display: none;" > </p>  
-                    <p id="item-client-{{client.id}}">{{client.id_number}} </p> 
-                </td>
-                <td>
-                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.name}}" style="display: none;"> </p> 
-                     <p id="item-client-{{client.id}}">{{client.name}}</p>
-                </td>
-                <td>
-                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.lastname}}" style="display: none;"> </p> 
-                    <p id="item-client-{{client.id}}">{{client.lastname}} </p>
-                </td>
-                <td>
-                    <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.tel}}" style="display: none;"> </p> 
-                    <p id="item-client-{{client.id}}">{{client.tel}}</p>
-                </td>
 
-                <td> 
-                    <button class="button_blue" onclick="modify_view({{client.id}})"> Modify </button> 
-                    <button class="button_red" onclick="delete_client({{client.id}})" > Delete </button>
-                    <button class="button_green" onclick="modify_client({{client.id}})" style="display: none;" > Apply </button>
-                </td>
-            </tr>
+            <tbody>
+                {% csrf_token %}
 
-            {% endfor %}
-            
+                {% for client in clients %}
+                <tr>
+
+                    <td>
+                        <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.id_number}}"
+                                style="display: none;"> </p>
+                        <p id="item-client-{{client.id}}"> <a href="show-client/{{client.id}}"> {{client.id_number}} </a> </p>
+                    </td>
+                    <td>
+                        <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.name}}"
+                                style="display: none;"> </p>
+                        <p id="item-client-{{client.id}}">{{client.name}}</p>
+                    </td>
+                    <td>
+                        <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.lastname}}"
+                                style="display: none;"> </p>
+                        <p id="item-client-{{client.id}}">{{client.lastname}} </p>
+                    </td>
+                    <td>
+                        <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.tel}}"
+                                style="display: none;"> </p>
+                        <p id="item-client-{{client.id}}">{{client.tel}}</p>
+                    </td>
+
+                    <td>
+                        <button class="button_blue" onclick="modify_view({{client.id}})"> Modify </button>
+                        <button class="button_red" onclick="location.href='client/{{client.id}}'""> Delete </button>
+                        <button class="button_green" onclick="modify_client({{client.id}})" style="display: none;">
+                            Apply </button>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
         </table>
 
     </div>

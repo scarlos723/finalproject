@@ -1,0 +1,25 @@
+{% extends "inventory/layout.html" %}
+
+
+{% block titlepage %}
+Order {order.id}
+{% endblock %}
+
+{% block body %}
+<div class="page">
+    <div class="container ft-center">
+        <form action="order/{{order.id}}" class="item_date" method="POST">
+        {% csrf_token %}
+
+        Order Type: <input type="text" name="kind" value="{{order.kind}}">
+        Client: <input type="text" name="client" value="{{order.client.name}}">
+        Description: <textarea type="text" name="description" >{{order.description}} </textarea>
+        Date: <input type="text" name="date" value="{{order.date}}" >
+        Value: $<input type="text" name="value" value="{{order.value}}">
+        User Created:<input type="text" name="user" value="{{order.user.username}}">
+        <button type="submit" class="button_blue">Modify</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

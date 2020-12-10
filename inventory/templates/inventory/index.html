@@ -1,7 +1,7 @@
 {% extends "inventory/layout.html" %}
 
 {% block titlepage %}
-Inventario
+Inventory
 {% endblock %}
 
 
@@ -30,7 +30,7 @@ Inventario
                 <td>{{product.model}}</td>
                 <td>${{product.price}}</td>
                 <td>{{product.stock}} </td>
-                <td><button class="button_blue"> Modify</button> <button class="button_red">Delete</button></td>
+                <td><button class="button_blue"> Modify</button> </td>
             </tr>
             {%endfor%}
         </tbody>

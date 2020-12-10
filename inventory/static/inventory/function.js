@@ -11,6 +11,31 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// function client_update(id){
+//     let client_form = document.getElementById('client-form').elements; //retorna una lista de los nputs
+//     let data = new FormData();
+
+//     data.append('csrfmiddlewaretoken',client_form.csrfmiddlewaretoken.value);
+//     data.append('name',client_form.name.value);
+//     data.append('lastname',client_form.lastname.value);
+//     data.append('identification', client_form.identification.value);
+//     data.append('telephone', client_form.telephone.value);
+   
+
+//     fetch('asdas',{
+//         method:'POST',
+//         body:data,
+        
+        
+//     })
+//     .then(response => response.json())
+//     .then(result => {
+//          // Print result
+//          console.log(result);
+//          //load_mailbox('inbox');
+//        });
+// }
+
 function modify_view(id){
     document.querySelectorAll('#inp-client-'+id).forEach(item=>{
         item.style.display ="block";
@@ -28,19 +53,37 @@ function modify_view(id){
 }
 
 function modify_client(id){
-    document.querySelectorAll('#inp-client-'+id).forEach(item=>{
-        item.style.display ="none";
-    });
-    
-    document.querySelectorAll('#item-client-'+id).forEach(item=>{
-        item.style.display ="block";
-    });
 
-    document.querySelector('.button_red').style.display ="inline";
-    document.querySelector('.button_blue').style.display ="inline";
-    document.querySelector('.button_green').style.display ="none";
+    //crear peticion
+    var data = new FormData();
     
+    var inps =  document.querySelectorAll('#inp-client-'+id);  //inps is type Nodelist
+    var token=  document.getElementsByName("csrfmiddlewaretoken"); //token is type Nodelist
 
+    data.append('csrfmiddlewaretoken',token[0].value);
+    data.append('identification', inps[0].value);
+    data.append('name', inps[1].value);
+    data.append('lastname', inps[2].value);
+    data.append('telephone', inps[3].value);
+
+
+        fetch('client/'+id,{
+            method:'POST',
+            body:data,
+            
+            
+        })
+        .then(response => response.json())
+        .then(result => {
+             // Print result
+             console.log(result);
+             //load_mailbox('inbox');
+             
+           });
+
+    setTimeout( console.log("Loading..."), 1000); //retardo para que recargue la pagina
+    window.location.href="client-list";        
+    
 }
 
 function create_order(order){
@@ -52,7 +95,7 @@ function create_order(order){
     let items = document.getElementById('tbody_cart').rows;
     
     for (var i=0; i< items.length; i++ ){
-        description = description + items[i].innerText + "Amount: " + items[i].lastElementChild.value + " \n"   ;
+        description = description + items[i].innerText + "Amount: " + items[i].lastElementChild.value + " ,"   ;
     }
         
     
@@ -69,6 +112,16 @@ function create_order(order){
     data.append('user_id', order_form.user_id.value);
     data.append('total', document.getElementById("total-cart").innerText);
     data.append('description', description);
+
+    //obtener tuplas de cantidades
+    let inps = document.querySelectorAll('.cant-item');
+    let cant_list ="[";
+    for(let i=0; i < inps.length; i++){
+        cant_list = cant_list + "(" + inps[i].getAttribute('id') + "," + inps[i].value + "),";
+    }
+    cant_list=cant_list+"]";
+
+    data.append('cant_list', cant_list);
 
     console.log("Creando orden...");
     //console.log(order_form);
@@ -144,6 +197,8 @@ function add_to_cart(id){
     cant.setAttribute('value','1'); 
     cant.setAttribute('onkeyup','calc_total()');
     cant.setAttribute('onclick','calc_total()');
+    cant.setAttribute('min','0');
+    cant.setAttribute('max', document.getElementById('item-stock-'+id).innerText);
 
     tbl1.innerHTML = name;
     tbl2.innerHTML = model;

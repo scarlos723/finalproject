@@ -10,6 +10,7 @@ class Product(models.Model):
     model =  models.CharField(max_length=192, null=True)
     price = models.IntegerField()
     stock = models.IntegerField()
+    sold_number = models.IntegerField()
     
 
 class Client(models.Model):

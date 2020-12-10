@@ -12,4 +12,8 @@ urlpatterns = [
     path('order-list/<str:kind>',views.show_orders, name='show_orders'),
     path('client-list',views.show_clients, name='show_clients'),
     path('order-list',views.show_orders, name='show_orders'),
+    path('client/<str:id>',views.client_controller, name='client_controller'),
+    path('show-client/<str:id>',views.client_view, name='client_view'),
+    path('show-order/<str:id>',views.order_view, name='order_view'),
+    path('reports',views.show_reports, name='show_reports'),
 ]

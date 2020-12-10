@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="{% static 'network/styles.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}">
 
@@ -28,7 +27,7 @@
             <li class="item "><a href="{% url 'index'%} ">Inventory</a></li>
             <li class="item "><a href="{% url 'orders' %}">Make Orders</a></li>
             
-            <li class="item "><a href="reportes.html">Reports</a></li>
+            <li class="item "><a href="{% url 'show_reports' %}">Reports</a></li>
             <!-- <li> <button id="change-mode" onclick="change_mode()">Night Mode</button></li> -->
 
             <li class="log_option "><a href="{% url 'logout' %}">Log Out</a><a href="#">{{user.username}}</a></li>

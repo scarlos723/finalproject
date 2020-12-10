@@ -2,19 +2,15 @@
 
 
 {% block titlepage %}
-Login
+Make Order
 {% endblock %}
 
 {% block body %}
 
-{% if message %}
-    {{message}}
-{% endif %}
-
     <div class="container ft-cont">
         <div class="head-cont">
             <strong>Products In stock</strong>
-            <input class="head-cont" type="text" value="buscar">
+            <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
         </div>
         <table id="date-table">
             <thead>
@@ -85,11 +81,11 @@ Login
                 </div>
                 <form id="order-form" class="item_date" method="POST">
                     {% csrf_token %}
-                    <input name="name" type="text" placeholder="Name" >
-                    <input name="lastname" type="text" placeholder="Lastname" >
-                    <input name="identification" type="text" placeholder="Identification" >
-                    <input name="telephone" type="text" placeholder="Telephone number" >
-                    <input name="user_id" type="text" hidden value="{{user.id}}" >
+                    <input name="name" type="text" placeholder="Name" required>
+                    <input name="lastname" type="text" placeholder="Lastname" required>
+                    <input name="identification" type="text" placeholder="Identification" required>
+                    <input name="telephone" type="text" placeholder="Telephone number" required>
+                    <input name="user_id" type="text" hidden value="{{user.id}}" required>
 
                     <div class="button_container">
                         <button class="button_green" onclick="create_order('sale')"> Check In</button>

@@ -1,112 +1,78 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset='UTF-8' />
-    <title>Cliente</title>
-    <link rel='stylesheet' href='css/styles.css' />
-</head>
+{% extends "inventory/layout.html" %}
+{% load static %}
 
-<body>
+{% block titlepage %}
+Client
+{% endblock %}
 
-    <nav>
-        <ul class="menu">
-            <li class="logo "><a href="login.html">LOGO</a></li>
-            <li class="item "><a href="index.html">Inventario</a></li>
-            <li class="item "><a href="ordenes_cotizaciones.html">Ordenes y Cotizaciones</a></li>
-            <li class="item "><a href="proveedores_compras.html"> Proveedoras y Compras</a></li>
-            <li class="item "><a href="reportes.html">Reportes</a></li>
+{% block body %}
 
-            <li class="log_option "><a href="#">Log Out</a><a href="#">USER</a></li>
 
-        </ul>
-    </nav>
-    <div class="page">
+<div class="page">
 
-        <div class="container_flex">
-            <div class="box-client">
-                <img src="images/user2.svg" alt="">
+    <div class="container_flex">
+        <div class="box-client">
+            <img src="{% static 'images/user2.svg' %}" width="50px">
+        </div>
+
+        <div class="box-client  ft-mid">
+            <div id="text_date">
+                Client Data:
             </div>
-
-            <div class="box-client  ft-mid">
-                <div id="text_date">
-                    Datos del cliente:
-                </div>
-                <form action="" class="item_client">
-                    <p> Nombre <input type="text" value="Fulanito"></p>
-                    <p> Apellido <input type="text" value="Perez"></p>
-                    <p> Identificacion <input type="text" value="Identificacion"> </p>
-                    <p> Telefono <input type="text" value="Telefono"> </p>
-
-                </form>
+            <form action="{{client.id}}" class="item_client" method="POST">
+                {% csrf_token %}
+                <p> Name: <input type="text" name="name" value="{{client.name}}"></p>
+                <p> Lastname: <input type="text" name="lastname" value="{{client.lastname}}"></p>
+                <p> Identification: <input type="text" name="identification" value="{{client.id_number}}"> </p>
+                <p> Telephone: <input type="text" name="telephone" value="{{client.tel}}"> </p>
 
             </div>
             <div class="box-client ft-end">
-                <button class="button_blue"> Actualizar </button>
-
+                <button class="button_blue" type="submit"> Update </button>
+    
             </div>
 
+            </form>
+
+    
+    </div>
+
+    <div class="container_flex ft-colum">
+        <div class="head-cont">
+            <strong>Orders </strong>
+            <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
         </div>
 
-        <div class="container_flex ft-colum">
-            <div class="head-cont">
-                <strong>Ordenes </strong>
-                <input class="head-cont" type="text" value="buscar">
-            </div>
+        <div>
+            <table id="date-table">
+                <thead>
+                    <th>id Order</th>
+                    <th>Order Type</th>
+                    <th>Value</th>
+                    <th>User Created</th>
+                    <th>Acciones</th>
 
-            <div>
-                <table id="websendeos">
-                    <thead>
-                        <th>No. Orden</th>
-                        <th>Tipo de orden</th>
-
-                        <th>Valor</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-
-                    </thead>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
                     <tr>
-                        <td>516511515481</td>
-                        <td> Venta </td>
-
-                        <td> $1'544,171.00</td>
-                        <td> En proceso</td>
-                        <td><button> modificar</button> <button>eliminar</button></td>
+                        <td>{{order.id}}</td>
+                        <td>{{order.kind}}</td>
+                        <td>${{order.value}}</td>
+                        <td>{{order.user.username}}</td>
+                        <td><button class="button_blue"> Modify </button> <button class="button_red">Delete</button></td>
                     </tr>
-                    <tr>
-                        <td>516511515481</td>
-                        <td> Compra </td>
-
-                        <td> $1'544,171.00</td>
-                        <td> En proceso</td>
-                        <td><button> modificar</button> <button>eliminar</button></td>
-                    </tr>
-                    <tr>
-                        <td>516511515481</td>
-                        <td> Venta </td>
-
-                        <td> $1'544,171.00</td>
-                        <td> Terminada</td>
-                        <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
-                    </tr>
-                    <tr>
-                        <td>516511515481</td>
-                        <td> Compra </td>
-
-                        <td> $1'544,171.00</td>
-                        <td> En proceso</td>
-                        <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
-                    </tr>
-                </table>
-            </div>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
         </div>
-
-
-
-
     </div>
 
 
-</body>
 
-</html>
+
+</div>
+
+{% endblock %}

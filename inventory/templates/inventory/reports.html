@@ -1,0 +1,71 @@
+{% extends "inventory/layout.html" %}
+{% load static %}
+
+{% block titlepage %}
+Reports
+{% endblock %}
+
+{% block body %}
+<div class="page">
+
+    <div class="container ft-cards">
+        <div class="card">
+            <p> <h3> Total Sales  </h3> </p>
+            <p> <strong>${{total_sales}}</strong> </p>
+
+
+            <div class="card-box">
+                <div class="card-box">
+                    <img src="{% static 'images/coin.svg' %}">
+                </div>
+                <div class="card-box ft-colum ft-just-right">
+                    <p> Clients </p>
+                    <p> <strong>{{total_clients}} </strong> </p>
+                    <p> Quotes </p>
+                    <p> <strong> {{total_quotes}} </strong> </p>
+                </div>
+            </div>
+
+            
+            <div class="card-box ft-just-center">
+                <div class="button-card-box">
+                   
+                  
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="card">
+                
+            <p> <h3> Products Inventory </h3> </p>
+            
+            <div class="card-box">
+                <div class="card-box">
+                    <img src="{% static 'images/inventory.svg' %}">
+                </div>
+                <div class="card-box ft-colum ft-just-right">
+                    <p>Products in Stock</p>
+                    <p> <strong>{{stock_prod}} </strong> </p>
+                    <p>sold Products</p>
+                    <p> <strong> {{sold_prod}}</strong> </p>
+                </div>
+            </div>
+
+            
+            <div class="card-box ft-just-center">
+                <div class="button-card-box">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock %}

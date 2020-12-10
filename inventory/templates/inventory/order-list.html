@@ -2,35 +2,39 @@
 
 
 {% block titlepage %}
-Login
+Orders {{order_type}}
 {% endblock %}
 
 {% block body %}
 
-{% if message %}
-{{message}}
-{% endif %}
 
-<table>
-    <thead>
-        <th>No. Orden</th>
-        <th>Client</th>
-        <th>User</th>
-        <th>Value</th>
-        
-        <th>Actions</th>
+<div class="page">
+    <div class="container ft-center">
+        <div class="head-cont">
+            <strong>Orders {{order_type}}</strong>
+            <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
+        </div>
+        <table id="date-table">
+            <thead>
+                <th>No. Orden</th>
+                <th>Client</th>
+                <th>User Created</th>
+                <th>Value</th>
 
-    </thead>
-    {% for order in orders %}
-    <tr>
-        <td>{{order.id}} </td>
-        <td>{{order.client.name}} {{order.client.lastname}}  </td>
-        <td>{{order.user.username}} </td>
-        <td>${{order.value}} </td>
-       
-        <td><button class="button_blue"> modificar</button> <button class="button_red">eliminar</button></td>
-    </tr>
-    {% endfor %}
-</table>
+            </thead>
+            {% for order in orders %}
+            <tr>
+                <td> <a href="/inventory/show-order/{{order.id}}"> {{order.id}}  </a> </td>
+                <td>{{order.client.name}} {{order.client.lastname}} </td>
+                <td>{{order.user.username}} </td>
+                <td>${{order.value}} </td>
+
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
 
 {% endblock %}
