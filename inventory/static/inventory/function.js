@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+function show_form(){
+    document.querySelector(".form-created-product").style.display="block";
+}
 
 function update_product(id){
     let data = new FormData();
@@ -28,12 +31,18 @@ function update_product(id){
         
         
     })
-    .then(response => response.json())
+    .then(response => response) //se quita la funcion .json() para que no arroje error
     .then(result => {
          // Print result
-         console.log(result);
+         console.log(result); //imprime un objetohtml con el resultado
+         console.log("Aqui debe ir el set")
+         setTimeout( console.log("Loading..."), 1000); //retardo para que recargue la pagina
+         window.location.href="/inventory";  
          //load_mailbox('inbox');
        });
+
+    
+
 
 }
 
@@ -110,7 +119,7 @@ function create_order(order){
     let items = document.getElementById('tbody_cart').rows;
     
     for (var i=0; i< items.length; i++ ){
-        description = description + items[i].innerText + "Amount: " + items[i].lastElementChild.value + " ,"   ;
+        description = description + items[i].innerText + "Amount: " + items[i].lastElementChild.value + "\n"   ;
     }
         
     
@@ -333,13 +342,3 @@ function search_item(){
 
 }
 
-// function change_mode(){
-//     let state = document.getElementById("change-mode").innerText;
-
-//     if(state == "Night Mode"){
-//         document.body.style.backgroundColor = '#474c59';
-        
-//         console.log('color cambviado a modo oscuro');
-        
-//     }
-// }

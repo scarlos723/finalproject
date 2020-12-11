@@ -171,7 +171,7 @@ def order_view(request,id):
 
     if request.method == "POST":
 
-        order.kind = request.POST["order_type"]
+        order.kind = request.POST["kind"]
         order.value = request.POST["value"]
         order.description = request.POST["description"]
         order.save()
@@ -209,9 +209,30 @@ def product_controller(request,id):
         product.model = request.POST['model']
         product.price = request.POST['price']
         product.stock = request.POST['stock']
-        print("product update")
-
+    
         product.save()
 
+        print("product update")
 
-    return index(request)
+    products =  Product.objects.all()
+    return render(request,"inventory/index.html",{"products":products})
+
+def create_product(request):
+
+    if request.method == "POST":
+        name = request.POST['name']
+        model = request.POST['model']
+        price = request.POST['price']
+        stock = request.POST['stock']
+        product = Product.objects.create(name=name, model=model,price=price,stock=stock,sold_number=0)
+        product.save()
+        print("Product Created")
+    
+    return index(request)  
+
+# def modify_order(request,id):
+#     order = Order.objects.get(pk=id)
+#     if reques.method == "POST":
+#         kind = request.POST["kind"]
+#         description = request.POST["description"]
+#         value = request.POST["value"]

@@ -28,26 +28,31 @@ Inventory
 
             <tr>
                 <td>
-                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-name-{{product.id}}" value="{{product.name}}" style="display: none;"> </p>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-name-{{product.id}}"
+                            value="{{product.name}}" style="display: none; width: 80%; text-align: center;"> </p>
                     <p class="row-product-{{product.id}}"> {{product.name}} </p>
-                    
+
                 </td>
                 <td>
-                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-model-{{product.id}}" value="{{product.model}}" style="display: none;"> </p>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-model-{{product.id}}"
+                            value="{{product.model}}" style="display: none; width: 80%; text-align: center;"> </p>
                     <p class="row-product-{{product.id}}">{{product.model}}</p>
 
                 </td>
                 <td>
-                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-price-{{product.id}}" value="{{product.price}}" style="display: none;"> </p>
-                    <p class="row-product-{{product.id}}"> ${{product.price}} </p> 
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-price-{{product.id}}"
+                            value="{{product.price}}" style="display: none; width: 80%; text-align: center;"> </p>
+                    <p class="row-product-{{product.id}}"> ${{product.price}} </p>
                 </td>
                 <td>
-                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-stock-{{product.id}}" value="{{product.stock}}" style="display: none;"> </p>
-                    <p class="row-product-{{product.id}}"> {{product.stock}} </p> 
+                    <p> <input type="number" min="0" class="inp-product-{{product.id}}" id="inp-stock-{{product.id}}"
+                            value="{{product.stock}}" style="display: none; width: 80%; text-align: center;"> </p>
+                    <p class="row-product-{{product.id}}"> {{product.stock}} </p>
                 </td>
                 <td>
-                    <button class="button_blue" onclick="modify_product({{product.id}})"> Modify</button> 
-                    <button class="button_green" onclick="update_product({{product.id}})" style="display: none;"> Apply</button>
+                    <button class="button_blue" onclick="modify_product({{product.id}})"> Modify</button>
+                    <button class="button_green" onclick="update_product({{product.id}})" style="display: none;">
+                        Apply</button>
                 </td>
             </tr>
             {%endfor%}
@@ -55,6 +60,18 @@ Inventory
     </table>
 
 </div>
-
+<div class="container">
+    <button class="button_blue" onclick="show_form()"> Add New Product</button>
+    <div class="container ft-center">
+        <form action="product" class="form-created-product" method="POST" style="display: none;">
+            {% csrf_token %}
+            <input type="text" name="name" id="" placeholder="Name" required>
+            <input type="text" name="model" id="" placeholder="Model" required>
+            <input type="text" name="price" id="" placeholder="Price" required>
+            <input type="text" name="stock" id="" placeholder="Stock" required>
+            <button type="submit" class="button_green" >Create</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

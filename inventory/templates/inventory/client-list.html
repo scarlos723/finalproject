@@ -13,9 +13,9 @@ Login
     <div class="container ft-center">
         <div class="head-cont">
             <strong>Clients </strong>
-            <input class="head-cont" type="text" placeholder="search">
+            <input class="head-cont" id="searchTerm" type="text" onkeyup="search_item()" placeholder="Search">
         </div>
-        <table>
+        <table id="date-table">
             <thead>
                 <th>Identification</th>
                 <th>Name</th>
@@ -33,22 +33,22 @@ Login
 
                     <td>
                         <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.id_number}}"
-                                style="display: none;"> </p>
+                                style="display: none; width: 100%; text-align: center;"> </p>
                         <p id="item-client-{{client.id}}"> <a href="show-client/{{client.id}}"> {{client.id_number}} </a> </p>
                     </td>
                     <td>
                         <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.name}}"
-                                style="display: none;"> </p>
+                                style="display: none; width: 100%; text-align: center;"> </p>
                         <p id="item-client-{{client.id}}">{{client.name}}</p>
                     </td>
                     <td>
                         <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.lastname}}"
-                                style="display: none;"> </p>
+                                style="display: none; width: 100%; text-align: center;"> </p>
                         <p id="item-client-{{client.id}}">{{client.lastname}} </p>
                     </td>
                     <td>
                         <p> <input type="text" id="inp-client-{{client.id}}" value="{{client.tel}}"
-                                style="display: none;"> </p>
+                                style="display: none; width: 100%; text-align: center;"> </p>
                         <p id="item-client-{{client.id}}">{{client.tel}}</p>
                     </td>
 

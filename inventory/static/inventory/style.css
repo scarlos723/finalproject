@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 .page{
     display: flex;
     flex-wrap: wrap;
@@ -175,6 +176,8 @@ table{
     text-align: center;
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 3px 5px 5px 1px #C6C6C6;
+    
     
 }
 th , td{
@@ -193,6 +196,7 @@ td>input{
 }
 
 
+
   
 
 
@@ -201,6 +205,9 @@ td>input{
 /* Basic styling */ 
 body { font-family: sans-serif; } 
 
+nav{
+    font-size: 18px;
+}
 nav ul{
     display: flex;
     margin: 0px 10px;
@@ -521,8 +528,30 @@ a:hover{
     font-size: 16px;
 }
 
+
+/* Forms styles */
+.form-created-product{
+    margin-top: 7px;
+}
+
+/* Style form order*/
+#form-show-order{
+    border-radius: 20px;
+    border: 1px solid #C6C6C6 ;
+    box-shadow: 3px 5px 5px 1px #C6C6C6;
+    width: 50%;
+}
+#form-show-order>input{
+    text-align: center;
+    width: 70%;
+}
+#form-show-order>textarea{
+    text-align: center;
+    width: 70%;
+}
+
 /* Mobile Styles */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 512px) {
    
     .menu_ft{
         flex-direction: column;
@@ -537,6 +566,7 @@ a:hover{
     }
     nav{
         margin-bottom:250px ;
+        font-size: 14px;
     }
 
     nav ul {
@@ -554,17 +584,24 @@ a:hover{
     /* Estilo Tablas */
     table {
         width:100%;
+        font-size: 14px;
     }
     thead {
         display: none;
     }
     tr:nth-of-type(2n) {
         background-color: inherit;
+        
+    }
+    tr{
+        border: 1px solid #C6C6C6 ;
+        box-shadow: 3px 5px 5px 1px #C6C6C6;
     }
     tr td:first-child {
         background: #f0f0f0;
         font-weight:bold;
         font-size:1.3em;
+        
     }
     tbody td {
         display: block;
@@ -580,8 +617,8 @@ a:hover{
     /* Estilos de cards */
     .card{
         
-        font-size: 10px;
-
+        font-size: 15px;
+        width: 95%;
     }
    
     .card-box>img{
@@ -603,14 +640,14 @@ a:hover{
         border-radius: 5px; 
         padding: 3px 7px ;
         color: white;
-        font-size: 9px;
+        font-size: 11px;
     }
     .button_red{
         
         border-radius: 5px; 
         padding: 3px 7px ;
         color: white;
-        font-size: 9px;
+        font-size: 11px;
     }
     
     .button_green{
@@ -618,7 +655,7 @@ a:hover{
         border-radius: 5px; 
         padding: 3px 7px ;
         color: white;
-        font-size: 9px;
+        font-size: 11px;
     }
     
     .button_yellow{
@@ -626,7 +663,7 @@ a:hover{
         border-radius: 5px; 
         padding: 3px 7px ;
         color: black;
-        font-size: 9px;
+        font-size: 11px;
     }
     
     
@@ -635,14 +672,66 @@ a:hover{
         border-radius: 5px; 
         padding: 3px 7px ;
         color: white;
-        font-size: 9px;
+        font-size: 11px;
     
     }
+
+    .cotiza_container{
+        flex-direction: column;
+    }
+
+    .date_box{
+        margin-top: 5px;
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .cotiza_container>table{
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .head-cont{
+        font-size: 14px;
+    }
+    #searchTerm{
+        font-size: 13px;
+        width: 100px;
+    }
+
+    .ft-cards{
+        width: 95%;
+        flex-direction: column  ;
+    }
     
-  }
+    /* Style form order*/
+    h2{
+        font-size: 18px;
+    } 
+    #form-show-order{
+        width: 90%;
+        font-size: 14px;
+    }
+    #form-show-order>input{
+        text-align: center;
+        width: 90%;
+    }
+    #form-show-order>textarea{
+        text-align: center;
+        width: 90%;
+    }
+        
+}
+
+
+
+
+
+
+
    
 /* Tablet Styles */
-  @media only screen and (min-width: 401px) and (max-width: 980px) {
+  @media only screen and (min-width: 511px) and (max-width: 980px) {
     
 
     nav{

@@ -2,21 +2,34 @@
 
 
 {% block titlepage %}
-Order {order.id}
+Order {{order.id}}
 {% endblock %}
 
 {% block body %}
 <div class="page">
     <div class="container ft-center">
-        <form action="order/{{order.id}}" class="item_date" method="POST">
+        <h2>Order Data {{order.id}}</h2>
+    </div>
+    <div class="flex-cont ft-center ft-colum"  >
+        
+        
+        <form action="{{order.id}}" class="item_date" method="POST" id="form-show-order">
         {% csrf_token %}
 
-        Order Type: <input type="text" name="kind" value="{{order.kind}}">
-        Client: <input type="text" name="client" value="{{order.client.name}}">
+        Order Type: <select name="kind">
+            <option value="sale"selected>{{order.kind}}</option> 
+            
+            {% if order.kind == "Sale" %}
+            <option value="Quote">Quote</option>
+            {% else %}
+            <option value="Sale">Sale</option>
+            {% endif%} 
+          </select>
+        Client: <input type="text" name="client" value="{{order.client.name}}" readonly>
         Description: <textarea type="text" name="description" >{{order.description}} </textarea>
-        Date: <input type="text" name="date" value="{{order.date}}" >
+        Date: <input type="text" name="date" value="{{order.date}}" readonly>
         Value: $<input type="text" name="value" value="{{order.value}}">
-        User Created:<input type="text" name="user" value="{{order.user.username}}">
+        User Created:<input type="text" name="user" value="{{order.user.username}}" readonly>
         <button type="submit" class="button_blue">Modify</button>
         </form>
     </div>
