@@ -7,10 +7,10 @@ Este es el diseño de un sitio web creado con Django, que permite manejar el inv
 En primera instancia el sitio web pide el inicio de sesión del usuario, también se puede crear uno nuevo. Accediendo con las respectivas credenciales, el usuario ya puede acceder a la interfaz del sitio web.
  
  #### Interfaz de inicio de sesión
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/login.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/login.png)
  
  #### Interfaz de crear nuevo usuario
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/register.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/register.png)
 
 
 
@@ -21,7 +21,7 @@ El sitio web cuenta con una nav-bar que tienen tres secciones:
 
 En la parte superior derecha se encuentra el nombre del usuario y la opción para cerrar la sesión.
 
- ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/index.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/index.png)
 
 Desde la sección **Inventario** se puede observar la información de los productos y la cantidad que existe. También se puede modificar y crear un producto nuevo a través de los botones que tiene la vista, botón "Modify" y "Add New Product" respectivamente. Estos dos botones habilitan las opciones para poder realizar la respectiva acción.
 
@@ -41,22 +41,22 @@ La sección **Crear Orden** permite tomar los distintos productos que existen en
 La **lista de órdenes**  tiene un campo llamado "No. orden" , desde aquí se puede acceder a la información detallada de la orden y posteriormente se puede modificar la descripción, el valor y tipo de esta.
  
 #### Interfaz, lista de órdenes
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderList.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderList.png)
 
 #### Interfaz, ver orden
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderView.png)    
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderView.png)    
 
 La **lista de clientes** tiene un campo llamado "Identificación", haciendo click en este se puede acceder a la información detallada del cliente y las órdenes relacionadas. También se puede modificar la información del cliente.
 
 #### Interfaz, lista de clientes
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientList.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientList.png)
 
 #### Interfaz, ver cliente
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientView.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientView.png)
 
 El botón “Modify” habilita los campos para ingresar la nueva información, también muestra el botón "Apply" el cual aplica los cambios. 
 
-    ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/modifyclient.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/modifyclient.png)
 
 
 
