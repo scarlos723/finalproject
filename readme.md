@@ -6,7 +6,7 @@ Este es el diseño de un sitio web creado con Django, que permite manejar el inv
  
 En primera instancia el sitio web pide el inicio de sesión del usuario, también se puede crear uno nuevo. Accediendo con las respectivas credenciales, el usuario ya puede acceder a la interfaz del sitio web.
  
-![](https://https://github.com/scarlos723/finalproject/images-readme/login.png)
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/login.png)
  
  
 El sitio web cuenta con una nav-bar que tienen tres secciones:
