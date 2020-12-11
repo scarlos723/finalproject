@@ -50,9 +50,11 @@ Inventory
                     <p class="row-product-{{product.id}}"> {{product.stock}} </p>
                 </td>
                 <td>
-                    <button class="button_blue" onclick="modify_product({{product.id}})"> Modify</button>
-                    <button class="button_green" onclick="update_product({{product.id}})" style="display: none;">
+                    <button class="button_blue" id="button_blue-{{product.id}}" onclick="modify_product({{product.id}})"> Modify</button>
+                    <button class="button_green" id="button_green-{{product.id}}" onclick="update_product({{product.id}})" style="display: none;">
                         Apply</button>
+
+                        
                 </td>
             </tr>
             {%endfor%}

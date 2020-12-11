@@ -51,17 +51,17 @@ Client
                     <th>Order Type</th>
                     <th>Value</th>
                     <th>User Created</th>
-                    <th>Acciones</th>
+                    
 
                 </thead>
                 <tbody>
                     {% for order in orders %}
                     <tr>
-                        <td>{{order.id}}</td>
+                        <td><a href="/inventory/show-order/{{order.id}} ">{{order.id}}  </a> </td>
                         <td>{{order.kind}}</td>
                         <td>${{order.value}}</td>
                         <td>{{order.user.username}}</td>
-                        <td><button class="button_blue"> Modify </button> <button class="button_red">Delete</button></td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

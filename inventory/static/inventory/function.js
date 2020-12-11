@@ -55,8 +55,8 @@ function modify_product(id){
     document.querySelectorAll('.row-product-'+id).forEach(item=>{
         item.style.display='none';
     });
-    document.querySelector('.button_blue').style.display='none';
-    document.querySelector('.button_green').style.display='block';
+    document.querySelector('#button_blue-'+id).style.display='none';
+    document.querySelector('#button_green-'+id).style.display='block';
 }
 
 
@@ -69,9 +69,9 @@ function modify_view(id){
         item.style.display ="none";
     });
 
-    document.querySelector('.button_red').style.display ="none";
-    document.querySelector('.button_blue').style.display ="none";
-    document.querySelector('.button_green').style.display ="block";
+    document.querySelector('#button_red-'+id).style.display ="none";
+    document.querySelector('#button_blue-'+id).style.display ="none";
+    document.querySelector('#button_green-'+id).style.display ="block";
     
     
 }

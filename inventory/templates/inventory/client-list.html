@@ -53,9 +53,9 @@ Login
                     </td>
 
                     <td>
-                        <button class="button_blue" onclick="modify_view({{client.id}})"> Modify </button>
-                        <button class="button_red" onclick="location.href='client/{{client.id}}'""> Delete </button>
-                        <button class="button_green" onclick="modify_client({{client.id}})" style="display: none;">
+                        <button class="button_blue" id="button_blue-{{client.id}}" onclick="modify_view({{client.id}})"> Modify </button>
+                        <button class="button_red" id="button_red-{{client.id}}" onclick="location.href='client/{{client.id}}'""> Delete </button>
+                        <button class="button_green" id="button_green-{{client.id}}" onclick="modify_client({{client.id}})" style="display: none;">
                             Apply </button>
                     </td>
                 </tr>
