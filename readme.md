@@ -6,15 +6,26 @@ Este es el diseño de un sitio web creado con Django, que permite manejar el inv
  
 En primera instancia el sitio web pide el inicio de sesión del usuario, también se puede crear uno nuevo. Accediendo con las respectivas credenciales, el usuario ya puede acceder a la interfaz del sitio web.
  
+ ### vista de inicio de sesión
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/login.png)
  
- 
+ ### vista de crear nuevo usuario
+ ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/register.png)
+
+
+
 El sitio web cuenta con una nav-bar que tienen tres secciones:
 - #### Inventario
 - #### Crear orden
 - #### Reportes
- 
+
+En la parte superior derecha se encuentra el nombre del usuario y la opción para cerrar la sesión.
+
+ ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/index.png)
+
 Desde la sección **Inventario** se puede observar la información de los productos y la cantidad que existe. También se puede modificar y crear un producto nuevo a través de los botones que tiene la vista, botón "Modify" y "Add New Product" respectivamente.
+
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/modifyProduct.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/newProduct.png)
  
 ##### NOTA:  **Las tablas tienen una entrada de búsqueda la cual permite filtrar la información que se encuentra en estas. Esto es gracias a la siguiente función JavaScript que se encuentra en el archivo function.js (ruta *static/inventory*) :**
  
