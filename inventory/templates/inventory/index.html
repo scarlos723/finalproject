@@ -23,14 +23,32 @@ Inventory
 
         </thead>
         <tbody>
+            {% csrf_token %}
             {% for product in products %}
 
             <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.model}}</td>
-                <td>${{product.price}}</td>
-                <td>{{product.stock}} </td>
-                <td><button class="button_blue"> Modify</button> </td>
+                <td>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-name-{{product.id}}" value="{{product.name}}" style="display: none;"> </p>
+                    <p class="row-product-{{product.id}}"> {{product.name}} </p>
+                    
+                </td>
+                <td>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-model-{{product.id}}" value="{{product.model}}" style="display: none;"> </p>
+                    <p class="row-product-{{product.id}}">{{product.model}}</p>
+
+                </td>
+                <td>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-price-{{product.id}}" value="{{product.price}}" style="display: none;"> </p>
+                    <p class="row-product-{{product.id}}"> ${{product.price}} </p> 
+                </td>
+                <td>
+                    <p> <input type="text" class="inp-product-{{product.id}}" id="inp-stock-{{product.id}}" value="{{product.stock}}" style="display: none;"> </p>
+                    <p class="row-product-{{product.id}}"> {{product.stock}} </p> 
+                </td>
+                <td>
+                    <button class="button_blue" onclick="modify_product({{product.id}})"> Modify</button> 
+                    <button class="button_green" onclick="update_product({{product.id}})" style="display: none;"> Apply</button>
+                </td>
             </tr>
             {%endfor%}
         </tbody>

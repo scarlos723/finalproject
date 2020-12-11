@@ -11,30 +11,45 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// function client_update(id){
-//     let client_form = document.getElementById('client-form').elements; //retorna una lista de los nputs
-//     let data = new FormData();
+function update_product(id){
+    let data = new FormData();
+    let token = document.getElementsByName("csrfmiddlewaretoken");
+    //token is type Nodelist
 
-//     data.append('csrfmiddlewaretoken',client_form.csrfmiddlewaretoken.value);
-//     data.append('name',client_form.name.value);
-//     data.append('lastname',client_form.lastname.value);
-//     data.append('identification', client_form.identification.value);
-//     data.append('telephone', client_form.telephone.value);
-   
+    data.append('csrfmiddlewaretoken', token[0].value );
+    data.append('name',document.getElementById('inp-name-'+id).value);
+    data.append('model',document.getElementById('inp-model-'+id).value);
+    data.append('price',document.getElementById('inp-price-'+id).value);
+    data.append('stock',document.getElementById('inp-stock-'+id).value);
 
-//     fetch('asdas',{
-//         method:'POST',
-//         body:data,
+    fetch('product/'+id,{
+        method:'POST',
+        body:data,
         
         
-//     })
-//     .then(response => response.json())
-//     .then(result => {
-//          // Print result
-//          console.log(result);
-//          //load_mailbox('inbox');
-//        });
-// }
+    })
+    .then(response => response.json())
+    .then(result => {
+         // Print result
+         console.log(result);
+         //load_mailbox('inbox');
+       });
+
+}
+
+
+function modify_product(id){
+
+    document.querySelectorAll('.inp-product-'+id).forEach(item=>{
+        item.style.display='block';
+    });
+    document.querySelectorAll('.row-product-'+id).forEach(item=>{
+        item.style.display='none';
+    });
+    document.querySelector('.button_blue').style.display='none';
+    document.querySelector('.button_green').style.display='block';
+}
+
 
 function modify_view(id){
     document.querySelectorAll('#inp-client-'+id).forEach(item=>{

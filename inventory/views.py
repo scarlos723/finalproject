@@ -197,6 +197,21 @@ def show_reports(request):
         stock_prod = stock_prod + int(product.stock)
         sold_prod = sold_prod + int(product.sold_number)
 
-
-
     return render(request, "inventory/reports.html",{"total_sales":total_sales, "total_clients":total_clients, "total_quotes":total_quotes, "stock_prod":stock_prod, "sold_prod":sold_prod})
+
+
+def product_controller(request,id):
+    
+    if request.method == "POST":
+        product = Product.objects.get(pk=id)
+
+        product.name = request.POST['name']
+        product.model = request.POST['model']
+        product.price = request.POST['price']
+        product.stock = request.POST['stock']
+        print("product update")
+
+        product.save()
+
+
+    return index(request)
