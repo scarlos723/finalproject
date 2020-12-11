@@ -36,6 +36,8 @@ function search_item(){
 
 The **Make Order** section allows you to take the different products that exist in the inventory and add them to the order list at the bottom. It also allows taking the customer's data (name, surname, identification and telephone number) which are associated with the order. If the user is new, a new entry is created in the database, if the user already exists, only the order is related to the existing user. From this section you can access three lists; purchase order list, quote order list, customer list, by means of the buttons; "Show Sales", "Show Quotes" and "Show Clients".
 
+Every time a sales order is created, the quantity of products sold is deducted directly from inventory
+
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/makeOrder.png)
 
 The **order list** has a field called "No. Order", from here you can access the detailed information of the order and later you can modify the description, the value and type of this.
