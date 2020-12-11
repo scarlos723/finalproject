@@ -1,75 +1,73 @@
  
-# Descripción del proyecto "Inventario"
-#### Proyecto desarrollado en Django
+# Description of the project "Inventory"
+#### Project developed in Django
  
-Este es el diseño de un sitio web creado con Django, que permite manejar el inventario de productos de una tienda, donde se puede  administrar la información de los clientes, también la información de  las órdenes de compra y las órdenes de cotización.
+This is the design of a website created with Django, which allows you to manage the inventory of products in a store, where you can manage customer information, also information about purchase orders and quotation orders.
  
-En primera instancia el sitio web pide el inicio de sesión del usuario, también se puede crear uno nuevo. Accediendo con las respectivas credenciales, el usuario ya puede acceder a la interfaz del sitio web.
+In the first instance the website asks for the user's login, you can also create a new one. By logging in with the respective credentials, the user can now access the website interface.
  
- #### Interfaz de inicio de sesión
+ #### Login interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/login.png)
  
- #### Interfaz de crear nuevo usuario
+#### Create new user interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/register.png)
 
 
 
-El sitio web cuenta con una nav-bar que tienen tres secciones:
-- #### Inventario
-- #### Crear orden
-- #### Reportes
+The website has a nav-bar that has three sections:
+- #### Inventory
+- #### Make order
+- #### Reports
 
-En la parte superior derecha se encuentra el nombre del usuario y la opción para cerrar la sesión.
-
+At the top right is the user's name and the option to log out.
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/index.png)
 
-Desde la sección **Inventario** se puede observar la información de los productos y la cantidad que existe. También se puede modificar y crear un producto nuevo a través de los botones que tiene la vista, botón "Modify" y "Add New Product" respectivamente. Estos dos botones habilitan las opciones para poder realizar la respectiva acción.
+From the section **Inventory** you can see the information of the products and the quantity that exists. You can also modify and create a new product through the buttons in the view, "Modify" button and "Add New Product" respectively. These two buttons enable the options to be able to carry out the respective action.
 
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/modifyProduct.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/newProduct.png)
  
-##### NOTA:  **Las tablas tienen una entrada de búsqueda la cual permite filtrar la información que se encuentra en estas. Esto es gracias a la siguiente función JavaScript que se encuentra en el archivo function.js (ruta *static/inventory*) :**
- 
+##### NOTE: **The tables have a search entry which allows filtering the information found in them. This is thanks to the following JavaScript function found in the function.js file (path * static / inventory *):**
+
 ```javascript
 function search_item(){
    ....
 }
 ```
-La sección **Crear Orden** permite tomar los distintos productos que existen en el inventario y agregarlos a la lista de la orden en la parte inferior. También permite tomar los datos del cliente (nombre, apellido, identificación y teléfono) los cuales van asociados a la orden. Si el usuario es nuevo se crea una nueva entrada en la base de datos, si el usuario ya existe solo se relaciona la orden al usuario existente. Desde esta sección se puede acceder a tres listas; lista de órdenes de compra, lista de órdenes de cotización, lista de clientes, por medio de los botones; "Show Sales", "Show Quotes" y "Show Clients".
+
+The **Make Order** section allows you to take the different products that exist in the inventory and add them to the order list at the bottom. It also allows taking the customer's data (name, surname, identification and telephone number) which are associated with the order. If the user is new, a new entry is created in the database, if the user already exists, only the order is related to the existing user. From this section you can access three lists; purchase order list, quote order list, customer list, by means of the buttons; "Show Sales", "Show Quotes" and "Show Clients".
 
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/makeOrder.png)
 
-La **lista de órdenes**  tiene un campo llamado "No. orden" , desde aquí se puede acceder a la información detallada de la orden y posteriormente se puede modificar la descripción, el valor y tipo de esta.
+The **order list** has a field called "No. Order", from here you can access the detailed information of the order and later you can modify the description, the value and type of this.
  
-#### Interfaz, lista de órdenes
+#### Order list interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderList.png)
 
-#### Interfaz, ver orden
+#### View order interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/orderView.png)    
 
-La **lista de clientes** tiene un campo llamado "Identificación", haciendo click en este se puede acceder a la información detallada del cliente y las órdenes relacionadas. También se puede modificar la información del cliente.
+The **client list** has a field called "Identification", by clicking on this you can access detailed information about the client and related orders. Customer information can also be modified.
 
-#### Interfaz, lista de clientes
+#### Customer list interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientList.png)
 
-#### Interfaz, ver cliente
+#### View client interface
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/clientView.png)
 
-El botón “Modify” habilita los campos para ingresar la nueva información, también muestra el botón "Apply" el cual aplica los cambios. 
+The "Modify" button enables the fields to enter the new information, it also shows the "Apply" button which applies the changes.
 
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/modifyclient.png)
 
 
-
-
-La sección **Reportes** Muestra un informe detallado en dos bloques tipo tarjeta, la primera tarjeta muestra el total de ventas, los clientes y  las cotizaciones, la segunda tarjeta muestra el total de productos vendidos y el total de productos en inventario.
+The **Reports** section shows a detailed report in two card-type blocks, the first card shows total sales, customers and quotes, the second card shows total products sold and total products in inventory.
  
- #### Interfaz de reportes
+ #### Reports interface
 
 ![](https://github.com/scarlos723/finalproject/blob/master/images-readme/reports.png)
  
-Todo el código **CSS** (archivo style.css) de la página web fue creado en la ruta *static/inventory* de la aplicación. No fue necesario utilizar Bootstrap u otras herramientas relacionadas. De igual forma las funciones **JavaScript**  implementadas (archivo function.js) permiten enviar peticiones y modificar el DOM del documento para ocultar o mostrar los distintos elementos que lo componen.
+All the **CSS** code (style.css file) of the web page was created in the *static / inventory* path of the application. No need to use Bootstrap or other related tools. In the same way, the **JavaScript** functions implemented (function.js file) allow to send requests and modify the document's DOM to hide or show the different elements that compose it.
  
-Los modelos creados en el archivo "**models.py**" de la aplicación "**Inventario**" fueron 4:
+The models created in the file "**models.py**" of the application "**Inventory**" were 4: 
 ```python
 class User(AbstractUser):
    pass
@@ -86,7 +84,7 @@ class Order(models.Model):
    ...
  
 ```
-La aplicación tiene un diseño responsivo para móviles, el cual se definió que se cargarán cuando el navegador tenga una vista con un ancho máximo de 512 pixeles:
+The application has a responsive design for mobiles, which has been defined to load when the browser has a view with a maximum width of 512 pixels:
  
 ```css
 /* Mobile Styles */
@@ -96,3 +94,8 @@ La aplicación tiene un diseño responsivo para móviles, el cual se definió qu
  
    }
 ```
+By changing the width of the page, you can see the change in the font size of the text and the size of the buttons. The most significant change is that of the tables that must be adjusted to be able to visualize the information well. Below you can see some of the interfaces mobile responsive.
+
+#### Mobile responsive
+
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileLogin.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileClientList.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder1.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileOrderList.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileReports.png)
