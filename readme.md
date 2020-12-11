@@ -98,4 +98,15 @@ By changing the width of the page, you can see the change in the font size of th
 
 #### Mobile responsive
 
-![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileLogin.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileClientList.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder1.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileOrderList.png)![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileReports.png)
+###### Login
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileLogin.png)
+###### Client list
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileClientList.png)
+###### Make order 1
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder.png)
+###### Make order 2
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileMakeOrder1.png)
+###### Order list
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileOrderList.png)
+###### Reports
+![](https://github.com/scarlos723/finalproject/blob/master/images-readme/mobileReports.png)
